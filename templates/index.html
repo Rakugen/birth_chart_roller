@@ -1,0 +1,39 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+{% block title %}BIRTH CHART GENERATOR by Simo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <ul class="list-group ascendant">
+        <li class="list-group-item">House: {{ ascendant.house }}</li>
+        <li class="list-group-item">Degree: {{ ascendant.ascendant }}</li>
+
+    </ul>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Planet</th>
+            <th scope="col">Sign</th>
+            <th scope="col">Degree</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for planet in planets %}
+        <tr>
+          <td>{{ planet.name }}</td>
+          <td>{{ planet.sign }}</td>
+          <td>{{ planet.degree }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+
+</div>
+{% endblock %}
+
